@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<form action="#" method="post">
+	<form id="form" name="form" action="">
         <p>
             <label id="caption">Faulk Family Budget</label>
         </p>
@@ -19,7 +19,7 @@
 			<input id="password" name="password" type="password">
 		</p>
 		<p>
-			<input type="submit" value="LOG IN" id="submit">
+			<input type="submit" value="LOG IN" id="submit" onclick="changePage()">
 		</p>
 	</form>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>

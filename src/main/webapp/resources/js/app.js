@@ -1,12 +1,10 @@
 var $password = $("#password");
 var $username = $("#username");
 
-function changePage()
+function redirect()
 {
-   changePage('/budget')
-}
-
-function changePage(url)
-{
-   window.location = url;
+   if ($username === "bgfaulk" && $password === "newport1")
+   {
+      location.href = "/budget";
+   }
 }

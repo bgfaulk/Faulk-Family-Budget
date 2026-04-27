@@ -1,0 +1,1 @@
+ALTER TABLE "monthly_actual_entries" ADD COLUMN "direction" "cashflow_direction";

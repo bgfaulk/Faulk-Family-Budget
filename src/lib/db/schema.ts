@@ -19,6 +19,7 @@ export const monthActualStatusEnum = pgEnum("month_actual_status", ["planned", "
 export const importSourceTypeEnum = pgEnum("import_source_type", ["budget_v1_xlsx", "budget_v2_csv", "monarch_csv"]);
 export const importJobStatusEnum = pgEnum("import_job_status", ["created", "processing", "completed", "failed"]);
 export const accountSnapshotSourceEnum = pgEnum("account_snapshot_source", ["monarch_import", "manual"]);
+export const dividendCadenceEnum = pgEnum("dividend_cadence", ["weekly", "monthly", "other"]);
 
 /** User-defined "Paid from" labels for recurring expenses (e.g. checking account, card). */
 export const paymentSources = pgTable(
@@ -152,6 +153,46 @@ export const importRows = pgTable("import_rows", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+/** Dividend-paying holdings (tickers) for the coverage cup visualizer. */
+export const dividendHoldings = pgTable(
+  "dividend_holdings",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    ticker: varchar("ticker", { length: 16 }).notNull(),
+    name: varchar("name", { length: 200 }),
+    displayOrder: integer("display_order").notNull().default(0),
+    dividendCadence: dividendCadenceEnum("dividend_cadence").notNull().default("monthly"),
+    isArchived: boolean("is_archived").notNull().default(false),
+    notes: text("notes"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    tickerUnique: uniqueIndex("dividend_holdings_ticker_uidx").on(table.ticker),
+  }),
+);
+
+/** Manual per-holding dividend cash received for a calendar month (YYYY-MM). */
+export const monthlyDividendEntries = pgTable(
+  "monthly_dividend_entries",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    month: varchar("month", { length: 7 }).notNull(),
+    holdingId: uuid("holding_id")
+      .notNull()
+      .references(() => dividendHoldings.id, { onDelete: "cascade" }),
+    amount: numeric("amount", { precision: 12, scale: 2 }).notNull().default("0"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    monthHoldingUnique: uniqueIndex("monthly_dividend_entries_month_holding_uidx").on(
+      table.month,
+      table.holdingId,
+    ),
+  }),
+);
+
 export type PaymentSource = typeof paymentSources.$inferSelect;
 export type NewPaymentSource = typeof paymentSources.$inferInsert;
 export type BillTemplate = typeof billTemplates.$inferSelect;
@@ -164,3 +205,7 @@ export type MonthSummary = typeof monthSummaries.$inferSelect;
 export type NewMonthSummary = typeof monthSummaries.$inferInsert;
 export type AccountSnapshot = typeof accountSnapshots.$inferSelect;
 export type NewAccountSnapshot = typeof accountSnapshots.$inferInsert;
+export type DividendHolding = typeof dividendHoldings.$inferSelect;
+export type NewDividendHolding = typeof dividendHoldings.$inferInsert;
+export type MonthlyDividendEntry = typeof monthlyDividendEntries.$inferSelect;
+export type NewMonthlyDividendEntry = typeof monthlyDividendEntries.$inferInsert;

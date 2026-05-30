@@ -1,0 +1,30 @@
+{
+  "month": "2026-05",
+  "source": "Robinhood activity (manual reconcile vs Snowball export through 2026-05-29 close)",
+  "note": "Monthly totals per ticker; includes May 22, May 28, and late May 30 payments missing from Snowball.",
+  "totalsByTicker": {
+    "AMZY": 0.19,
+    "APLY": 0.23,
+    "BTCI": 1.59,
+    "FBY": 0.15,
+    "GDXY": 20.66,
+    "GOOY": 0.3,
+    "IAUI": 0.56,
+    "KCOP": 0.3,
+    "MLPI": 0.7,
+    "NFLY": 0.12,
+    "NVDY": 0.27,
+    "QDTE": 1.34,
+    "QQQI": 0.66,
+    "SMCY": 11.29,
+    "SPYI": 1.07,
+    "TSPY": 0.38,
+    "XDTE": 0.46,
+    "XPAY": 0.9,
+    "XRPM": 0.41,
+    "YMAG": 0.42,
+    "YMAX": 0.27,
+    "CHPY": 1.31,
+    "TDAQ": 0.38
+  }
+}

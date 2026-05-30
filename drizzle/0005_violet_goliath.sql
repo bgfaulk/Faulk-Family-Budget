@@ -1,0 +1,2 @@
+CREATE TYPE "public"."dividend_cadence" AS ENUM('weekly', 'monthly', 'other');--> statement-breakpoint
+ALTER TABLE "dividend_holdings" ADD COLUMN "dividend_cadence" "dividend_cadence" DEFAULT 'monthly' NOT NULL;

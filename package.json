@@ -12,7 +12,10 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:import": "tsx scripts/import-data.ts",
-    "db:seed-master-bills": "tsx scripts/seed-master-bills.ts"
+    "db:seed-master-bills": "tsx scripts/seed-master-bills.ts",
+    "db:seed-dividends-from-snowball": "tsx scripts/seed-dividends-from-snowball.ts",
+    "db:seed-dividends-robinhood": "tsx scripts/seed-dividends-robinhood.ts",
+    "db:apply-dividend-cadences": "tsx scripts/apply-dividend-cadences.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",

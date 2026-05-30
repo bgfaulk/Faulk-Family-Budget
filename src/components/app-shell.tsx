@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 const NAV_ITEMS = [
   { href: "/months", label: "Monthly Ledger" },
   { href: "/bills", label: "Recurring expenses" },
+  { href: "/dividends", label: "Dividend coverage" },
   { href: "/projections", label: "Projections" },
   { href: "/db-size", label: "DB Size" },
 ];

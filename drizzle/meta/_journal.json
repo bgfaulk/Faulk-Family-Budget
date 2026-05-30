@@ -29,6 +29,20 @@
       "when": 1777326257785,
       "tag": "0003_yielding_korg",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1780145644030,
+      "tag": "0004_bright_wither",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1780146698273,
+      "tag": "0005_violet_goliath",
+      "breakpoints": true
     }
   ]
 }

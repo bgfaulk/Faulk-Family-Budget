@@ -1,0 +1,33 @@
+{
+  "weekly": [
+    "CHPY",
+    "YMAG",
+    "YMAX",
+    "QDTE",
+    "XDTE",
+    "AMZY",
+    "APLY",
+    "FBY",
+    "GOOY",
+    "NFLY",
+    "NVDY",
+    "GDXY",
+    "SMCY"
+  ],
+  "monthly": [
+    "TDAQ",
+    "TSPY",
+    "SPYI",
+    "QQQI",
+    "BTCI",
+    "IAUI",
+    "MLPI",
+    "KCOP",
+    "XPAY",
+    "XRPM",
+    "ORR",
+    "CLSE",
+    "JEPI",
+    "JEPQ"
+  ]
+}
